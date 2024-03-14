@@ -21,7 +21,7 @@ def canUnlockAll(boxes):
 
     while len(keys) > 0 and len(box_indexes) < len(boxes):
         key = keys.pop()
-        if key in box_indexes:
+        if key in box_indexes or key >= len(boxes):
             continue
         box_indexes.add(key)
         keys.extend(boxes[key])
