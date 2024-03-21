@@ -31,6 +31,9 @@ def minOperations(n: int) -> int:
     clipboard = 0
     operations = 0
 
+    if type(n) is not int:
+        return 0
+
     while count < n:
         if (n % count == 0) and isPrime(count):
             clipboard = count
