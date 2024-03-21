@@ -4,17 +4,6 @@ Defines the function minOperations
 """
 
 
-def isPrime(num: int) -> bool:
-    """Checks in a number is prime"""
-    i = 2
-    mid = num / 2
-    while i < mid:
-        if num % i == 0:
-            return False
-        i += 1
-    return True
-
-
 def minOperations(n: int) -> int:
     """
     Calculates the fewest number of operations needed
@@ -31,11 +20,11 @@ def minOperations(n: int) -> int:
     clipboard = 0
     operations = 0
 
-    if type(n) is not int:
+    if not isinstance(n, int):
         return 0
 
     while count < n:
-        if (n % count == 0) and isPrime(count):
+        if (n - count) % count == 0:
             clipboard = count
             operations += 1
         count += clipboard
