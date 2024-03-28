@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-"""A script for parsing HTTP request logs.
-"""
+"""Parses HTTP logs from the standard input"""
 import re
 from typing import Dict
 
 
-def extract_input(line):
-    """Extracts sections of a line of an HTTP request log."""
+def process_input(line: str):
+    """Processes a line of an HTTP request log."""
     fp = (
         r"\s*(?P<ip>\S+)\s*",
         r"\s*\[(?P<date>\d+\-\d+\-\d+ \d+:\d+:\d+\.\d+)\]",
@@ -27,26 +26,6 @@ def extract_input(line):
         info["file_size"] = file_size
     return info
 
-    # line_pattern = (
-    #     r'\d+\.\d+\.\d+\.\d+\s-\s\[.+\]\s"'
-    #     + r'GET\s\/projects\/260\sHTTP\/1.1"\s\d{3}\s\d+'
-    # )
-
-    # info = {
-    #     "status_code": 0,
-    #     "file_size": 0,
-    # }
-
-    # status_codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
-
-    # if re.match(line_pattern, line):
-    #     parts = line.split(" ")
-    #     info["file_size"] = int(parts[-1])
-    #     code = parts[-2]
-    #     if code.isdigit() and code in status_codes:
-    #         info["status_code"] = code
-    # return info
-
 
 def print_log_stats(file_size: int, code_count: Dict[int, int]):
     """Prints the log stats"""
@@ -57,32 +36,18 @@ def print_log_stats(file_size: int, code_count: Dict[int, int]):
             print(f"{k}: {code_count[k]}")
 
 
-# def print_statistics(total_file_size, status_codes_stats):
-#     """Prints the accumulated statistics of the HTTP request log."""
-#     print("File size: {:d}".format(total_file_size), flush=True)
-#     for status_code in sorted(status_codes_stats.keys()):
-#         num = status_codes_stats.get(status_code, 0)
-#         if num > 0:
-#             print("{:s}: {:d}".format(status_code, num), flush=True)
-
-
-def update_metrics(line, total_file_size, status_codes_stats):
-    """Updates the metrics from a given HTTP request log.
-
-    Args:
-        line (str): The line of input from which to retrieve the metrics.
-
-    Returns:
-        int: The new total file size.
-    """
-    line_info = extract_input(line)
+def update_metrics(
+    line: str, total_file_size: int, status_codes_stats: Dict[int, int]
+) -> int:
+    """Updates the metrics from a given HTTP request log."""
+    line_info = process_input(line)
     status_code = line_info.get("status_code", "0")
     if status_code in status_codes_stats.keys():
         status_codes_stats[status_code] += 1
     return total_file_size + line_info["file_size"]
 
 
-def run():
+def run() -> None:
     """Starts the log parser."""
     line_num = 0
     total_file_size = 0
