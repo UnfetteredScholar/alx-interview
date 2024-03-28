@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Parses logs from the standard input"""
 import re
 import signal
