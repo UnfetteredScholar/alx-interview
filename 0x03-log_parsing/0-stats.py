@@ -24,7 +24,7 @@ def print_log_stats(file_size: int, code_count: Dict[int, int]):
 
 
 def signal_handler(sig, frame):
-    """Handles the keyboard interrupt"""
+    """Handles the keyboard interrupt (CTRL + C)"""
     print_log_stats(file_size, code_count)
     sys.exit(0)
 
