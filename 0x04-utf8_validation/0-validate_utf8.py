@@ -11,6 +11,8 @@ def validUTF8(data):
     """
     length = 0
     for b in data:
+        if type(b) is not int or b < 0 or b > 0x10ffff:
+            return False
         if length == 0:
             if (b >> 7) == 0:
                 continue
