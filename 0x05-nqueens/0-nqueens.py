@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Task 0"""
-from sys import argv
+import sys
 
 
 def is_horizontal(current: list, new: list) -> bool:
@@ -46,12 +46,12 @@ def is_diagonal(current: list, new: list) -> bool:
 
 if __name__ == "__main__":
 
-    if len(argv) != 2:
+    if len(sys.argv) != 2:
         print("Usage: nqueens N")
         exit(1)
 
     try:
-        N = int(argv[1])
+        N = int(sys.argv[1])
     except Exception:
         print("N must be a number")
         exit(1)
