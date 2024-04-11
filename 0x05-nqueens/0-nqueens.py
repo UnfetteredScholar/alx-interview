@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Task 0"""
+"""Task 0: Solution to the N Queens Problem"""
 import sys
 
 
