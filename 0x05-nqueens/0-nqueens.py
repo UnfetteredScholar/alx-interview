@@ -3,7 +3,7 @@
 import sys
 
 
-def is_horizontal(current: list, new: list) -> bool:
+def is_horizontal(current, new):
     """Checks if the new item is horizontally
     aligned with any of the existing items"""
 
@@ -14,7 +14,7 @@ def is_horizontal(current: list, new: list) -> bool:
     return False
 
 
-def is_vertical(current: list, new: list) -> bool:
+def is_vertical(current, new):
     """Checks if the new item is vertically
     aligned with any of the existing items"""
 
@@ -25,7 +25,7 @@ def is_vertical(current: list, new: list) -> bool:
     return False
 
 
-def is_diagonal(current: list, new: list) -> bool:
+def is_diagonal(current, new):
     """Checks if the new item is diagonally
     aligned with any of the existing items"""
 
