@@ -77,9 +77,9 @@ if __name__ == "__main__":
 
         for c in range(0, N):
             if (
-                (not is_horizontal(cur, [r, c]))
-                and (not is_vertical(cur, [r, c]))
-                and (not is_diagonal(cur, [r, c]))
+                (not is_horizontal(cur, [r, c])) and
+                (not is_vertical(cur, [r, c])) and
+                (not is_diagonal(cur, [r, c]))
             ):
                 queue.append(cur + [[r, c]])
 
