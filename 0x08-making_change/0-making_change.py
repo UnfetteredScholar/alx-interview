@@ -21,7 +21,11 @@ def makeChange(coins, total):
             sol[0] += (sol[1] - diff) / coin
             sol[1] = diff
 
-            if sol[1] == 0:
-                return int(sol[0])
+            # if sol[1] == 0:
+            #     return int(sol[0])
+    solutions = sorted(solutions, key=lambda x: x[0])
+    for sol in solutions:
+        if sol[1] == 0:
+            return int(sol[0])
 
     return -1
