@@ -8,7 +8,7 @@ def makeChange(coins, total):
     coins needed to meet a given amount total
     """
     if total <= 0:
-        return -1
+        return 0
 
     coins = sorted(coins, key=lambda x: -x)
     solutions = []  # (count, remainder)
