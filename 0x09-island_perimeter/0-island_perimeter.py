@@ -21,11 +21,11 @@ def map_island(r: int, c: int, grid: list) -> int:
     grid[r][c] = 2
 
     return (
-        sum
-        + map_island(r - 1, c, grid)
-        + map_island(r + 1, c, grid)
-        + map_island(r, c - 1, grid)
-        + map_island(r, c + 1, grid)
+        sum +
+        map_island(r - 1, c, grid) +
+        map_island(r + 1, c, grid) +
+        map_island(r, c - 1, grid) +
+        map_island(r, c + 1, grid)
     )
 
 
