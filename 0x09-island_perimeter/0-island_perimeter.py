@@ -3,19 +3,20 @@
 
 
 def map_island(r: int, c: int, grid: list) -> int:
+    """Maps the perimeter of an island"""
     if r < 0 or r >= len(grid) or c < 0 or c >= len(grid[0]):
         return 0
     if grid[r][c] != 1:
         return 0
 
     sum = 0
-    if r + 1 < len(grid) and grid[r + 1][c] == 0:  # Top
+    if r + 1 >= len(grid) or grid[r + 1][c] == 0:  # Top
         sum += 1
-    if r - 1 >= 0 and grid[r - 1][c] == 0:  # Bottom
+    if r - 1 < 0 or grid[r - 1][c] == 0:  # Bottom
         sum += 1
-    if c + 1 < len(grid[0]) and grid[r][c + 1] == 0:  # Right
+    if c + 1 >= len(grid[0]) or grid[r][c + 1] == 0:  # Right
         sum += 1
-    if c - 1 >= 0 and grid[r][c - 1] == 0:  # Left
+    if c - 1 < 0 or grid[r][c - 1] == 0:  # Left
         sum += 1
     grid[r][c] = 2
 
