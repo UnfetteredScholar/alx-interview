@@ -24,13 +24,22 @@ def isWinner(x, nums):
     maria = 0
     ben = 0
 
-    for n in nums:
-        primes = 0
-        for i in range(1, n + 1):
-            if isPrime(i):
-                primes += 1
+    if x <= 0 or not nums:
+        return None
 
-        if primes % 2 == 0:
+    max_num = max(nums)
+    primes = []
+
+    for i in range(1, max_num + 1):
+        primes.append(isPrime(i))
+
+    for n in nums:
+        primes_count = 0
+        for i in primes[0:n]:
+            if i:
+                primes_count += 1
+
+        if primes_count % 2 == 0:
             ben += 1
         else:
             maria += 1
